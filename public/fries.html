@@ -8,61 +8,99 @@
   <title>Cheesy Bolo Fries</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+
 </head>
-<body class="bg-[#EDE3D5] font-sans">
+<body class="bg-[#EDE3D5] font-[Poppins]">
 
-  <!-- Header -->
-  <div class="bg-[#B7471E] text-white p-4 flex justify-between items-center">
-    <a href="index.html" class="bg-[#F7B92A] p-2 rounded-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-    </a>
-    <button class="bg-[#F7B92A] p-2 rounded-full">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A1 1 0 006 19h12a1 1 0 00.879-1.516l-6-10a1 1 0 00-1.758 0l-6 10z"/>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Image -->
-  <div class="bg-[#B7471E] flex justify-center p-6 rounded-b-[3rem]">
-    <img src="images/fries1.jpg" class="rounded-full w-64 h-64 object-cover">
-  </div>
-
-  <!-- Content -->
-  <div class="p-6">
-    <h2 class="text-[#B7471E] font-bold text-xl mb-2">Cheesy Bolo Fries</h2>
-    <p class="text-sm text-gray-700 mb-4">
-      Kentang goreng renyah dengan topping saus bolognese gurih, saus keju creamy, dan sosis. 
-      Menu ini menghadirkan sensasi rasa gurih, creamy, dan mengenyangkan.
-    </p>
-
-    <h3 class="font-semibold text-gray-800 mb-2">Ingredient</h3>
-    <div class="flex gap-2 flex-wrap mb-6">
-      <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
-        <img src="images/potato.png" class="w-6 h-6"><span>Potato</span>
-      </div>
-      <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
-        <img src="images/cheese.png" class="w-6 h-6"><span>Cheese</span>
-      </div>
-      <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
-        <img src="images/sauce.png" class="w-6 h-6"><span>Bolo Sauce</span>
-      </div>
-      <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
-        <img src="images/sausage.png" class="w-6 h-6"><span>Sausage</span>
-      </div>
-      <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
-        <img src="images/parsley.png" class="w-6 h-6"><span>Parsley</span>
-      </div>
+    <!-- Header -->
+    <div class="bg-[#B7471E] text-white p-4 flex justify-between items-center">
+      <a href="index.html" class="bg-[#F7B92A] p-2 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
     </div>
 
-    <a href="https://wa.me/6282385989454" 
-       class="bg-[#B7471E] text-white text-center py-3 px-6 rounded-xl block font-semibold">
-      ORDER NOW
-    </a>
-  </div>
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="p-6 md:flex md:items-start md:justify-between md:gap-8 max-w-5xl mx-auto">
 
+      <!-- LEFT CONTENT -->
+      <div class="md:w-[55%]">
+
+        <h2 class="text-[#B7471E] font-bold text-3xl mb-4 leading-tight">
+          Cheesy Bolo Fries
+        </h2>
+
+        <p class="text-gray-700 text-sm leading-relaxed mb-5">
+          Perpaduan kentang goreng renyah dengan saus bolognese gurih,
+          saus keju creamy, dan potongan sosis membuat menu ini menjadi
+          favorit banyak orang. Dengan rasa gurih—creamy yang balance, 
+          Cheesy Bolo Fries memberikan pengalaman ngemil yang cocok dinikmati kapan saja.
+        </p>
+
+        <!-- ADDITIONAL DESCRIPTION -->
+        <div class="bg-[#F7B92A] bg-opacity-20 p-4 rounded-2xl mb-6 shadow">
+          <h3 class="font-semibold text-[#B7471E] mb-1">Kenapa Harus Coba Menu Ini?</h3>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            Menu ini diracik dengan tekstur kentang yang crispy, saus bolognese homemade,
+            dan cheese sauce lembut yang bikin setiap gigitan terasa lebih memuaskan.
+            Cocok untuk kamu yang suka rasa gurih, creamy, dan sedikit smoky dari sosis.
+          </p>
+        </div>
+
+        <h3 class="font-semibold text-[#B7471E] mb-2">Ingredients</h3>
+
+        <div class="flex gap-2 flex-wrap">
+          <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
+            <img src="images/potato.png" class="w-6 h-6"><span>Potato</span>
+          </div>
+          <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
+            <img src="images/cheese.png" class="w-6 h-6"><span>Cheese</span>
+          </div>
+          <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
+            <img src="images/sauce.png" class="w-6 h-6"><span>Bolo Sauce</span>
+          </div>
+          <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
+            <img src="images/sausage.png" class="w-6 h-6"><span>Sausage</span>
+          </div>
+          <div class="bg-white p-2 rounded-xl shadow-md flex items-center gap-2">
+            <img src="images/parsley.png" class="w-6 h-6"><span>Parsley</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="mt-10 md:mt-0 md:w-[45%] flex flex-col items-center">
+
+        <!-- IMAGE CARD -->
+        <div class="bg-white p-5 rounded-2xl shadow-lg">
+          <img src="images/fries1.jpg" class="rounded-2xl w-80 h-80 object-cover">
+        </div>
+
+        <!-- ORDER BUTTON -->
+        <a href="https://wa.me/6285187965816?text=Halo%20Minry!%20Aku%20mau%20order%20nih!"
+          class="mt-6 bg-[#B7471E] text-white text-center py-3 px-10 rounded-full shadow font-semibold hover:bg-[#9f3e19] transition">
+          ORDER NOW
+        </a>
+
+      </div>
+
+    </div>
+<!-- FOOTER -->
+<footer class="mt-20 bg-[#B7471E] text-white py-6 text-center rounded-t-[2rem]">
+  <p class="font-semibold">Tastory © 2025 — Every Bites Tells a Story</p>
+  <p class="text-sm opacity-80 mt-1">Makanan enak, estetis, dan penuh cerita.</p>
+</footer>
 </body>
 </html>
 
