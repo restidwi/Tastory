@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,159 +5,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tastory</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif !important;
+    }
+  </style>
+</head>
+
+<body class="bg-[#EDE3D5]">
+
+  <!-- HEADER -->
+  <header class="bg-[#B7471E] text-white pb-4 pt-10 flex flex-col justify-center items-center">
+    <img src="images/LOGO SECONDARY.png" class="h-20" alt="Logo Tastory">
+    <h1 class="text-lg font-semibold mt-2">Every Bites Tells a Story</h1>
+  </header>
+
+  <!-- HERO (wave bottom) -->
+  <div class="bg-[#B7471E] text-white p-6 rounded-b-[3rem]"></div>
+
+  <!-- ABOUT -->
+  <section class="mt-16 px-6 text-center">
+    <h2 class="text-2xl font-bold text-[#B7471E]">Kami percaya setiap gigitan punya cerita.</h2>
+    <p class="text-gray-700 mt-3 max-w-2xl mx-auto leading-relaxed">
+      Tastory hadir untuk menghadirkan cemilan dan minuman segar yang 
+      <span class="font-semibold text-[#B7471E]">unik, playful, dan instagrammable.</span>
+      Semua menu kami dibuat fresh, penuh rasa, dan cocok untuk nemenin hari kamu.
+    </p>
+  </section>
+
+  <!-- PRODUCT LIST (CENTER CAROUSEL) -->
+  <section class="mt-20 px-6 text-center">
+    <h2 class="text-2xl font-bold text-[#B7471E] mb-8">Katalog Menu</h2>
+
+    <div class="relative flex justify-center items-center max-w-full">
+
+      <!-- Tombol KIRI -->
+      <button id="leftBtn"
+        class="absolute left-2 sm:left-10 bg-[#B7471E] text-white p-3 rounded-full shadow hover:bg-[#9f3e19] transition z-20">
+        ◀
+      </button>
+
+      <!-- Carousel Wrapper -->
+      <div class="w-full flex justify-center">
+        <div id="carousel" class="flex gap-6 items-center transition-all duration-500 ease-out">
+          <!-- Card akan masuk lewat JS -->
+        </div>
+      </div>
+
+      <!-- Tombol KANAN -->
+      <button id="rightBtn"
+        class="absolute right-2 sm:right-10 bg-[#B7471E] text-white p-3 rounded-full shadow hover:bg-[#9f3e19] transition z-20">
+        ▶
+      </button>
+
+    </div>
+  </section>
+
+  <style>
+
+    /* POP-UP HOVER KHUSUS CARD TENGAH */
+    .card-center:hover {
+      transform: scale(1.12) !important;
+      box-shadow: 0 0 25px rgba(183, 71, 30, 0.45);
+    }
+
+    @media (max-width: 480px) {
+      #carousel div {
+        width: 220px !important;
+      }
     }
   </style>
 
-</head>
-<body class="bg-[#EDE3D5] font-[Poppins]">
+  <script>
+    const items = [
+      {
+        name: "Cheesy Bolo Fries",
+        img: "images/fries1.jpg",
+        desc: "Kentang goreng renyah dengan saus bolo creamy.",
+        tag: "⭐ Best Seller",
+        link: "fries.html"
+      },
+      {
+        name: "Snackmates",
+        img: "images/bundle.JPEG",
+        desc: "Combo gurih & segar, cocok buat sharing.",
+        tag: "👥 Sharing Menu",
+        link: "Snackmates.html"
+      },
+      {
+        name: "Berry Delight",
+        img: "images/berry1.jpg",
+        desc: "Minuman creamy-strawberry yang segar.",
+        tag: "🍓 Fresh & Sweet",
+        link: "berry.html"
+      }
+    ];
 
-  <!-- Header -->
-  <div class="bg-[#B7471E] text-white pb-2 pt-10 flex flex-col justify-center items-center">
-    <img src="images/LOGO SECONDARY.png" class="h-20" alt="Logo Tastory">
-    <h1 class="text-lg font-semibold mt-2">Every Bites Tells a Story</h1>
-    <!-- <button class="bg-[#F7B92A] p-2 rounded-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-      </svg>
-    </button>
-    <button class="bg-[#F7B92A] p-2 rounded-full">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A1 1 0 006 19h12a1 1 0 00.879-1.516l-6-10a1 1 0 00-1.758 0l-6 10z"/>
-      </svg>
-    </button> -->
-  </div>
+    let index = 0;
+    const carousel = document.getElementById("carousel");
 
-  <!-- Hero Section -->
-  <div class="bg-[#B7471E] text-white p-6 rounded-b-[3rem]">
-    <!-- <h1 class="text-lg font-semibold">Siap bikin hari ini jadi lebih gurih dan manis?</h1>
-    <div class="mt-4 bg-[#F7B92A] rounded-[2rem] p-3 flex items-center">
-      <img src="images/fries.jpg" class="w-1/3 rounded-l-2xl">
-      <div class="pl-3">
-        <p class="italic text-sm">Delicious</p>
-        <h2 class="text-white text-xl font-bold">Loaded Fries</h2>
-      </div>
-    </div> -->
-  </div>
+    function renderCarousel(animation = "") {
+      carousel.innerHTML = "";
 
-  <!-- ABOUT SECTION -->
-  <div class="mt-16 px-6 text-center">
-    <h2 class="text-2xl font-bold text-[#B7471E]">Kami percaya setiap gigitan punya cerita.</h2>
-    <p class="text-gray-700 mt-3 max-w-2xl mx-auto">
-      Tastory hadir karena kami percaya makanan yang berkesan harus punya cerita. 
-      Kami menyajikan kentang goreng dan minuman segar dengan rasa yang
-      <span class="font-semibold text-[#B7471E]">unik, topping seru</span>, dan
-      <span class="font-semibold text-[#B7471E]">tampilan yang instagrammable</span>
-      Agar setiap pesanan jadi cerita yang bisa kamu bagikan.
-    </p>
-  </div>
+      // Tambahkan class animasi
+      if (animation) {
+        carousel.classList.add(animation);
+        setTimeout(() => carousel.classList.remove(animation), 500);
+      }
 
-  <!-- Product List -->
-  <div class="mt-20 px-6">
-    <h2 class="text-2xl font-bold text-[#B7471E] text-center">Katalog Menu</h2>
+      const left = (index + items.length - 1) % items.length;
+      const center = index;
+      const right = (index + 1) % items.length;
 
-    <!-- Container grid agar selalu center -->
-    <div class="mt-10 grid grid-cols-[repeat(3,300px)] gap-4 w-full justify-center mx-auto">
+      const positions = [left, center, right];
 
-      <!-- Bolo Fries -->
-      <div class="bg-white p-4 rounded-3xl shadow-md 
-                  transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-xl
-                  w-full max-w-xs">
-        <img src="images/fries1.jpg" class="w-full h-36 rounded-xl object-cover">
-        <h3 class="text-[#B7471E] font-bold mt-3">Cheesy Bolo Fries</h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Kentang goreng renyah dengan topping saus bolognese gurih, saus keju creamy dan taburan sosis.
-        </p>
-        <span class="inline-block mt-3 text-sm bg-[#F7B92A] text-white px-3 py-1 rounded-full">
-          ⭐ Best Seller
-        </span>
-        <a href="fries.html" class="mt-3 inline-block text-[#B7471E] font-semibold">→</a>
-      </div>
+      positions.forEach((i, pos) => {
+        let style = "";
+        let pointer = "";
+        let hover = "";
 
-      <!-- Snackmates -->
-      <div class="bg-white p-4 rounded-3xl shadow-md
-                  transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-xl
-                  w-full max-w-xs">
-        <img src="images/bundle.JPEG" class="w-full h-36 rounded-xl object-cover">
-        <h3 class="text-[#B7471E] font-bold mt-3">Snackmates</h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Perpaduan gurih Bolo Fries dan manis segar Berry Delight. Teman sempurna untuk berbagi!
-        </p>
-        <span class="inline-block mt-3 text-sm bg-[#F7B92A] text-white px-3 py-1 rounded-full">
-          👥 Sharing Menu
-        </span>
-        <a href="Snackmates.html" class="mt-3 inline-block text-[#B7471E] font-semibold">→</a>
-      </div>
+        if (pos === 1) {
+          // CARD TENGAH (utama)
+          style = "opacity-100 scale-105 z-10 card-center";
+          hover = "card-center";
+        } else {
+          // CARD SAMPING
+          style = "opacity-50 scale-90 z-0 blur-[1px]";
+          pointer = "pointer-events-none";
+        }
 
-      <!-- Berry Delight -->
-      <div class="bg-white p-4 rounded-3xl shadow-md  
-                  transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-xl
-                  w-full max-w-xs">
-        <img src="images/berry1.jpg" class="w-full h-36 rounded-xl object-cover">
-        <h3 class="text-[#B7471E] font-bold mt-3">Berry Delight</h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Minuman segar dengan rasa strawberry dan susu creamy, cocok sebagai pelepas dahaga.
-        </p>
-        <span class="inline-block mt-3 text-sm bg-[#F7B92A] text-white px-3 py-1 rounded-full">
-          🍓 Fresh & Sweet
-        </span>
-        <a href="berry.html" class="mt-3 inline-block text-[#B7471E] font-semibold">→</a>
-      </div>
+        carousel.innerHTML += `
+          <div class="bg-white p-4 rounded-3xl shadow-xl w-64 flex-shrink-0
+                      transition-all duration-500 transform ${style} ${pointer} ${hover}">
+            <img src="${items[i].img}" class="w-full h-40 rounded-xl object-cover">
+            <h3 class="text-[#B7471E] font-bold mt-3">${items[i].name}</h3>
+            <p class="text-sm text-gray-600 mt-1">${items[i].desc}</p>
+            <span class="inline-block mt-3 text-sm bg-[#F7B92A] text-white px-3 py-1 rounded-full">
+              ${items[i].tag}
+            </span>
+            <a href="${items[i].link}" class="mt-3 inline-block text-[#B7471E] font-semibold">→</a>
+          </div>
+        `;
+      });
+    }
 
-    </div>
-  </div>
+    // Render pertama
+    renderCarousel();
+
+    // Tombol navigasi
+    document.getElementById("leftBtn").onclick = () => {
+      index = (index - 1 + items.length) % items.length;
+      renderCarousel("animate-slide-right");
+    };
+
+    document.getElementById("rightBtn").onclick = () => {
+      index = (index + 1) % items.length;
+      renderCarousel("animate-slide-left");
+    };
+  </script>
 
 
-
-  <!-- TESTIMONIAL SECTION -->
-  <div class="mt-20 px-6 text-center">
+  <!-- TESTIMONIALS -->
+  <section class="mt-20 px-6 text-center">
     <h2 class="text-2xl font-bold text-[#B7471E]">Apa Kata Mereka?</h2>
 
-    <div class="mt-10 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
       <div class="bg-white p-6 rounded-3xl shadow">
-        <p class="italic text-gray-700">
-          “Aku suka deh drinknya, mau pesen tiap hari boleh ga?”
-        </p>
+        <p class="italic text-gray-700">“Aku suka deh drinknya, mau pesen tiap hari boleh ga?”</p>
         <p class="text-[#B7471E] font-bold mt-3">— Ka Naya</p>
       </div>
 
       <div class="bg-white p-6 rounded-3xl shadow">
-        <p class="italic text-gray-700">
-          “Sumpah enak banget gais beli! Ngeju banget”
-        </p>
+        <p class="italic text-gray-700">“Sumpah enak banget gais beli! Ngeju banget.”</p>
         <p class="text-[#B7471E] font-bold mt-3">— Ayra</p>
       </div>
 
       <div class="bg-white p-6 rounded-3xl shadow">
-        <p class="italic text-gray-700">
-          “Enak! Rasanya pas terus bumbunya juga banyak!”
-        </p>
+        <p class="italic text-gray-700">“Enak! Rasanya pas dan bumbunya juga banyak!”</p>
         <p class="text-[#B7471E] font-bold mt-3">— Nailah</p>
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <!-- CONTACT / CTA SECTION -->
-  <div class="mt-20 px-6 text-center">
+  <!-- CTA SECTION -->
+  <section class="mt-20 px-6 text-center">
     <h2 class="text-2xl font-bold text-[#B7471E]">Siap mencicipi cerita kami?</h2>
+
     <p class="text-gray-700 mt-3">
-      Temukan chapter terbaru atau langsung pesan lewat WhatsApp.  
-      Kami update setiap minggu di Instagram & TikTok!
+      Pesan sekarang atau cek update terbaru kami di Instagram!
     </p>
 
-    <div class="mt-6 flex justify-center gap-4">
-      <a href="https://wa.me/6285187965816?text=Halo%20Minry!%20Aku%20mau%20order%20nih!" class="bg-[#B7471E] text-white px-6 py-3 rounded-full shadow hover:bg-[#9f3e19] transition">
+    <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+      <a href="https://wa.me/6285187965816?text=Halo%20Minry!%20Aku%20mau%20order%20nih%20🤩"
+         class="bg-[#B7471E] text-white px-6 py-3 rounded-full shadow hover:bg-[#9f3e19] transition">
         Order via WhatsApp
       </a>
-      <a href="https://forms.gle/97E7orqeJC3pqz5q9" class="bg-[#F7B92A] text-white px-6 py-3 rounded-full shadow hover:bg-[#d8a41f] transition">
+
+      <a href="https://forms.gle/97E7orqeJC3pqz5q9"
+         class="bg-[#F7B92A] text-white px-6 py-3 rounded-full shadow hover:bg-[#d8a41f] transition">
         Isi Form PO
       </a>
     </div>
@@ -167,13 +218,13 @@
     <p class="text-gray-600 mt-4 text-sm">
       Jam operasional: 10.00–17.00 WIB • Instagram: @tastory.bites
     </p>
-  </div>
+  </section>
 
-<!-- FOOTER -->
-<footer class="mt-20 bg-[#B7471E] text-white py-6 text-center rounded-t-[2rem]">
-  <p class="font-semibold">Tastory © 2025 — Every Bites Tells a Story</p>
-  <p class="text-sm opacity-80 mt-1">Makanan enak, estetis, dan penuh cerita.</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="mt-20 bg-[#B7471E] text-white py-6 text-center rounded-t-[2rem]">
+    <p class="font-semibold">Tastory © 2025 — Every Bites Tells a Story</p>
+    <p class="text-sm opacity-80 mt-1">Makanan enak, estetis, dan penuh cerita.</p>
+  </footer>
+
 </body>
 </html>
-
